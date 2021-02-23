@@ -33,6 +33,8 @@ if __name__ == "__main__":
     times = []
     times_avg = []
 
+    list_times = []
+
     need_rate = True
     
     with open(InputFile) as ifile:
@@ -45,10 +47,14 @@ if __name__ == "__main__":
             lineVals = line.split()
             Nmeas = len(lineVals)
             t_avg = 0
+            times_val = []
             for v in lineVals:
                 t_avg += float(v)
                 times.append(float(v))
+                times_val.append(float(v))
 
+
+            list_times.append(times_val)
             t_avg /= Nmeas
             times_avg.append(t_avg)
 

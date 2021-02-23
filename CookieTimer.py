@@ -19,8 +19,8 @@ if __name__ == "__main__":
     # default seed
     seed = 5555
 
-    # default rate parameter for cookie disappearance (cookies per day)
-    rate = 1.
+    # default single coin-toss probability for "1"
+    prob = 0.5
 
     # default number of time measurements (time to next missing cookie) - per experiment
     Nmeas = 1
@@ -39,7 +39,8 @@ if __name__ == "__main__":
         p = sys.argv.index('-rate')
         ptemp = float(sys.argv[p+1])
         if ptemp > 0:
-            rate = ptemp
+            prob = ptemp
+            
     if '-Nmeas' in sys.argv:
         p = sys.argv.index('-Nmeas')
         Nt = int(sys.argv[p+1])
@@ -63,12 +64,12 @@ if __name__ == "__main__":
         outfile.write(str(rate)+" \n")
         for e in range(0,Nexp):
             for t in range(0,Nmeas):
-                outfile.write(str(random.Exponential(rate))+" ")
+                outfile.write(str(random.random_triangular(prob,0.6,0.5))+" ")
             outfile.write(" \n")
         outfile.close()
     else:
-        print(rate)
+        print(prob)
         for e in range(0,Nexp):
             for t in range(0,Nmeas):
-                print(random.Exponential(rate), end=' ')
+                print(random.random_triangular(prob,0.6,0.5), end=' ')
             print(" ")

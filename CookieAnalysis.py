@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
     #make Npass figure
     plt.figure()
-    plt.hist(times,Nmeas+150,density=False,alpha=0.75)
+    plt.hist(times,Nmeas+1,density=True,alpha=0.75)
     plt.xlabel('Time between missing cookies[days]')
     plt.ylabel('Probability')
     plt.title("rate of 2.00 cookies/day")
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
 
     plt.figure()
-    plt.hist(times_avg,Nmeas+150,density=False,alpha=0.5,color='r')
+    plt.hist(times_avg,Nmeas+1,density=False,alpha=0.5,color='r')
     plt.xlabel('Average time between missing cookies[days]')
     plt.ylabel('Probability')
     plt.title("10 measurments/experiment with rate of 2.00 cookies/day")

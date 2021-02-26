@@ -20,26 +20,30 @@ if __name__ == "__main__":
     seed = 5555
 
     # default single coin-toss probability for "1"
-    prob = 0.5
+    low = 5
+    high = 9
 
     # default number of time measurements (time to next missing cookie) - per experiment
-    Nmeas = 1
+    Nmeas = 100
 
     # default number of experiments
-    Nexp = 1
+    Nexp = 100
 
     # output file defaults
     doOutputFile = False
 
     # read the user-provided seed from the command line (if there)
-    if '-seed' in sys.argv:
-        p = sys.argv.index('-seed')
-        seed = sys.argv[p+1]
-    if '-rate' in sys.argv:
-        p = sys.argv.index('-rate')
-        ptemp = float(sys.argv[p+1])
-        if ptemp > 0:
-            prob = ptemp
+    if '-low' in sys.argv:
+        p = sys.argv.index('-low')
+        l = float(sys.argv[p+1])
+        if l > 0:
+            low = l
+
+    if '-high' in sys.argv:
+        p = sys.argv.index('-high')
+        h = float(sys.argv[p+1])
+        if h > 0:
+            high = h
             
     if '-Nmeas' in sys.argv:
         p = sys.argv.index('-Nmeas')
@@ -64,12 +68,12 @@ if __name__ == "__main__":
         outfile.write(str(rate)+" \n")
         for e in range(0,Nexp):
             for t in range(0,Nmeas):
-                outfile.write(str(random.random_triangular(prob,0.6,0.5))+" ")
+                outfile.write(str(random.random_triangular(low,high,0.3))+" ")
             outfile.write(" \n")
         outfile.close()
     else:
-        print(prob)
+        print(low)
         for e in range(0,Nexp):
             for t in range(0,Nmeas):
-                print(random.random_triangular(prob,0.6,0.5), end=' ')
+                print(random.random_triangular(low,high,0.3)+' ')
             print(" ")

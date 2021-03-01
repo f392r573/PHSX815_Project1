@@ -70,12 +70,4 @@ class Random:
 
       return X
 
-    def random_triangular(self,low, high, mode):
-        while True:
-            proposal = uniform(low, high)
-            if proposal < mode:
-                acceptance_prob = (proposal - low) / (mode - low)
-            else:
-                acceptance_prob = (high - proposal) / (high - mode)
-            if random() < acceptance_prob: break
-        return proposal
+   
